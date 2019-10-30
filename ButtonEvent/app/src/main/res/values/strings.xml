@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">ButtonEvent</string>
+    <string name="nate">네이트로 이동</string>
+    <string name="phone">전화로 이동</string>
+    <string name="gallery">갤러리 이동</string>
+    <string name="exit">끝내기</string>
+</resources>
