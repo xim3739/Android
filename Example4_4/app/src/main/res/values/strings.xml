@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Example4_4</string>
+    <string name="firstTextViewMessage">선택을 시작하겠습니까 ?</string>
+    <string name="switchText">시작점</string>
+    <string name="secondTextViewMessage">좋아하는 안드로이드 버전은 ?</string>
+    <string name="buttonExit">종료</string>
+    <string name="buttonReturn">처음으로</string>
+</resources>

@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Example4_3</string>
+    <string name="sum">더하기</string>
+    <string name="sub">빼기</string>
+    <string name="multiple">곱하기</string>
+    <string name="divide">나누기</string>
+    <string name="label">결과는 : </string>
+</resources>
