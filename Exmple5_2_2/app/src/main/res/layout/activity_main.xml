@@ -15,7 +15,8 @@
         <EditText
             android:id="@+id/editText1"
             android:layout_width="match_parent"
-            android:layout_height="110dp" />
+            android:layout_height="110dp"
+/>
 
         <EditText
             android:id="@+id/editText2"
@@ -123,7 +124,7 @@
                android:layout_weight="1"
                android:text="결과는:"
                android:textSize="20sp"/>
-"/>
+            
             <TextView
                 android:id="@+id/result"
                 android:layout_weight="1"
