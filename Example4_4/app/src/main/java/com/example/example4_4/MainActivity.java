@@ -17,6 +17,8 @@ public class MainActivity extends AppCompatActivity {
     private ImageView imageView;
     private LinearLayout layout;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

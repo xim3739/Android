@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/btBase"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_centerInParent="true"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="btn1"
+        android:layout_above="@+id/btBase"
+        android:layout_alignLeft="@+id/btBase"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="btn2"
+        android:layout_alignTop="@+id/btBase"
+        android:layout_toLeftOf="@+id/btBase"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="btn3"
+        android:layout_toLeftOf="@+id/btBase"
+        android:layout_alignBaseline="@+id/btBase"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="btn4"
+        android:layout_toLeftOf="@+id/btBase"
+        android:layout_alignBottom="@+id/btBase"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="btn5"
+        android:layout_below="@+id/btBase"
+        android:layout_alignRight="@+id/btBase"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="bt6"
+        android:layout_toRightOf="@+id/btBase"
+        android:layout_above="@+id/btBase" />
+
+</RelativeLayout>

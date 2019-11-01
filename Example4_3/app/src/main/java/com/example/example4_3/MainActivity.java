@@ -73,9 +73,13 @@ import java.security.Key;
             public void onClick(View v) {
                 if(editTextFirst.getText().toString().isEmpty() || editTextSecond.getText().toString().isEmpty()) {
                     textViewResult.setText("숫자를 입력하세요");
+                    return;
+                }
+                if (editTextSecond.getText().toString().equals("0")){
+                    textViewResult.setText("나눌 수 없습니다. 숫자를 다시 입력 해주세요.");
                 } else {
-                    int sum = Integer.parseInt(editTextFirst.getText().toString().trim()) / Integer.parseInt(editTextSecond.getText().toString().trim());
-                    textViewResult.setText(String.valueOf(sum));
+                    double sum = Double.parseDouble(editTextFirst.getText().toString().trim()) / Double.parseDouble(editTextSecond.getText().toString().trim());
+                    textViewResult.setText(String.valueOf(Math.round(sum*100)/100.0));
                 }
             }
         });
