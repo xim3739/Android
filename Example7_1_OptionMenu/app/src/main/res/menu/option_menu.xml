@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/rotate"
+        android:title="그림회전"/>
+
+    <group
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/item1"
+            android:title="사진1" />
+        <item
+            android:id="@+id/item2"
+            android:title="사진2"/>
+        <item
+            android:id="@+id/item3"
+            android:title="사진3"/>
+
+    </group>
+
+</menu>
