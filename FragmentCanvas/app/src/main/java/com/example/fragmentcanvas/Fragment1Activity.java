@@ -17,15 +17,15 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 public class Fragment1Activity extends Fragment {
-    public View view;
-    public int select;
-    public final int ROTATE = 1, TRANS = 2, SCALE = 3, SKEW = 4;
+    public final int INIT = 0, ROTATE = 1, TRANS = 2, SCALE = 3, SKEW = 4;
+    public int select = INIT;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         //view = inflater.inflate(R.layout.frgment1, container, false);
 
         FragmentCanvas view = new FragmentCanvas(getActivity());
+        setHasOptionsMenu(true);
 
         return view;
     }
@@ -75,6 +75,8 @@ public class Fragment1Activity extends Fragment {
             int picY = (this.getHeight() - picture.getWidth())/2;
 
             switch (select) {
+                case INIT :
+                    canvas.drawBitmap(picture, picX, picY, null);
                 case ROTATE :
                     canvas.rotate(45,cenX,cenY);
                     canvas.drawBitmap(picture,picX,picY,null);

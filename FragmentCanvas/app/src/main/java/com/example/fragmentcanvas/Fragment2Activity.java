@@ -19,15 +19,15 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 public class Fragment2Activity extends Fragment {
-    public int select;
-    public final int NORMAL = 1, INNER = 2, OUTER = 3, SOLID = 4;
+    public final int INIT = 0, NORMAL = 1, INNER = 2, OUTER = 3, SOLID = 4;
+    public int select = INIT;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         //view = inflater.inflate(R.layout.frgment2, container, false);
 
         FragmentCanvas view = new FragmentCanvas(getActivity());
-
+        setHasOptionsMenu(true);
         return view;
     }
 
@@ -77,6 +77,9 @@ public class Fragment2Activity extends Fragment {
             BlurMaskFilter blurMaskFilter;
 
             switch (select) {
+                case INIT :
+                    canvas.drawBitmap(picture, picX, picY, null);
+                    break;
                 case NORMAL :
                     blurMaskFilter = new BlurMaskFilter(30, BlurMaskFilter.Blur.NORMAL);
                     paint.setMaskFilter(blurMaskFilter);

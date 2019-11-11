@@ -24,10 +24,10 @@ public class Fragment3Activity extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        //view = inflater.inflate(R.layout.frgment2, container, false);
+        //view = inflater.inflate(R.layout.frgment3, container, false);
 
         FragmentCanvas view = new FragmentCanvas(getActivity());
-
+        setHasOptionsMenu(true);
         return view;
     }
 
