@@ -30,18 +30,21 @@ public class MenuActivity extends AppCompatActivity {
 
         Intent passedIntent = getIntent();
         processIntent(passedIntent);
+
     }
 
     private void processIntent(Intent passedIntent) {
+        //arraylist 형태로 정보 받기
         if(passedIntent != null) {
             ArrayList<String> names = (ArrayList<String>) passedIntent.getSerializableExtra("names");
             if(names != null) {
                 Toast.makeText(getApplicationContext(), "전달 받은 이름 개수 : " + names.size(), Toast.LENGTH_SHORT).show();
             }
 
+            //parcel 형태로 정보 받기
             SimpleData data = (SimpleData) passedIntent.getParcelableExtra("data");
             if(data != null) {
-                Toast.makeText(getApplicationContext(), "전달 받은 simpledata : " + data.message + data.number, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "전달 받은 SimpleData : " + data.message + data.number, Toast.LENGTH_SHORT).show();
             }
         }
     }
