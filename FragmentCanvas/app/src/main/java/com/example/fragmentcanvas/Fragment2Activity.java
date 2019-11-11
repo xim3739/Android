@@ -34,10 +34,10 @@ public class Fragment2Activity extends Fragment {
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
 
-        menu.add(0,1,0,"회전");
-        menu.add(0,2,0,"이동");
-        menu.add(0,3,0,"확대");
-        menu.add(0,4,0,"기울이기");
+        menu.add(0,1,0,"보통");
+        menu.add(0,2,0,"이너");
+        menu.add(0,3,0,"아웃");
+        menu.add(0,4,0,"솔리드");
         super.onCreateOptionsMenu(menu, inflater);
     }
 
