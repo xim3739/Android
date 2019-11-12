@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btCanvasBlurMask.setOnClickListener(this);
         btCanvasColorMatrix.setOnClickListener(this);
 
-        btCanvasGeometry.callOnClick();
+        btCanvasBlurMask.callOnClick();
     }
 
     @Override

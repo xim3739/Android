@@ -77,6 +77,7 @@ public class Fragment1Activity extends Fragment {
             switch (select) {
                 case INIT :
                     canvas.drawBitmap(picture, picX, picY, null);
+                    break;
                 case ROTATE :
                     canvas.rotate(45,cenX,cenY);
                     canvas.drawBitmap(picture,picX,picY,null);
