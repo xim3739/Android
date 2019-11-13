@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="200dp"
+    android:layout_height="match_parent"
+    android:layout_gravity="left"
+    android:background="#F1C9C9"
+    android:id="@+id/navigateLayout">
+
+    <Button
+        android:id="@+id/btMoveToVote"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#F3EBB1"
+        android:text="투표 결과"
+        android:layout_margin="3dp"/>
+    <Button
+        android:id="@+id/btClose"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#F3EBB1"
+        android:layout_margin="3dp"
+        android:text="메뉴 닫기"/>
+
+</LinearLayout>
