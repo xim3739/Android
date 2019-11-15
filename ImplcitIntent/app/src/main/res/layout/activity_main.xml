@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <Button
+        android:id="@+id/btDial"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="DIAL"/>
+    <Button
+        android:id="@+id/btHomepage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="HOMEPAGE"/>
+    <Button
+        android:id="@+id/btGoogle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="OPEN GOOGLE"/>
+    <Button
+        android:id="@+id/btGoogleSearch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="SEARCH FOR GOOGLE"/>
+    <Button
+        android:id="@+id/btMessageSend"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="SEND MESSAGE"/>
+    <Button
+        android:id="@+id/btCamera"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TAKE A PICTURE"/>
+    <Button
+        android:id="@+id/btClose"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="EXIT"/>
+
+</LinearLayout>
