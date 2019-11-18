@@ -36,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
         btAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                count = 1;
                 list.add(new MainData(R.mipmap.ic_launcher, "심재현" + count++, "졸려"));
                 mainAdapter.notifyDataSetChanged();
             }

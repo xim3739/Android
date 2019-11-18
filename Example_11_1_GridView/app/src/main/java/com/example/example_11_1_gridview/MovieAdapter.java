@@ -15,7 +15,7 @@ public class MovieAdapter extends BaseAdapter {
 
     private Context context;
     private int layoutID;
-    private ArrayList<MovieData> list = new ArrayList<>();
+    private ArrayList<MovieData> list;
     private LayoutInflater layoutInflater;
 
     public MovieAdapter(Context context, int layoutID, ArrayList<MovieData> list) {

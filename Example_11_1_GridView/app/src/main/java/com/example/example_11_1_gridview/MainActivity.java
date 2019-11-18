@@ -5,12 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.GridView;
+import android.widget.ListView;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    private GridView gridView;
+    private ListView listView;
     private ArrayList<MovieData> list = new ArrayList<>();
     private MovieAdapter movieAdapter;
 
@@ -21,11 +22,11 @@ public class MainActivity extends AppCompatActivity {
 
         insertListData();
 
-        gridView = findViewById(R.id.gridView);
+        listView = findViewById(R.id.listView);
 
         movieAdapter = new MovieAdapter(MainActivity.this, R.layout.grid_itme_view, list);
 
-        gridView.setAdapter(movieAdapter);
+        listView.setAdapter(movieAdapter);
 
     }
 
