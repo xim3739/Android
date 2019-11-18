@@ -91,6 +91,7 @@ public class MovieAdapter extends BaseAdapter {
         gridImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 View viewDialog = View.inflate(context, R.layout.custom_dialog, null);
                 ImageView dialogImageView = viewDialog.findViewById(R.id.dialogImageView);
 
@@ -104,6 +105,7 @@ public class MovieAdapter extends BaseAdapter {
                 dialog.setView(viewDialog);
                 dialog.setPositiveButton("닫기", null);
                 dialog.show();
+
             }
         });
 
