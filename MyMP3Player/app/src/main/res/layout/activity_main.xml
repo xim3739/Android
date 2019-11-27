@@ -1,18 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbarFadeDuration="0"
+        android:scrollbarSize="5dp"
+        android:scrollbarThumbVertical="@color/colorAccent"
+        android:scrollbars="vertical"
+        android:layout_weight="1"
+        android:layout_above="@id/seekBar"
+        android:layout_marginBottom="10dp"
+        android:background="#dadada"
+        />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <SeekBar
+        android:id="@+id/seekBar"
+        style="@style/Widget.AppCompat.SeekBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/line1"
+        android:background="#dadada"
+        android:layout_marginBottom="10dp"/>
+
+    <LinearLayout
+        android:id="@+id/line1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_alignParentBottom="true">
+        <Button
+            android:id="@+id/btLike"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="찜"
+            android:layout_weight="1"/>
+        <Button
+            android:id="@+id/btMoveToSdCard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="sd카드"
+            android:layout_weight="1"/>
+        <Button
+            android:id="@+id/btPlay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="재생"
+            android:layout_weight="1"/>
+        <Button
+            android:id="@+id/btStop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="정지"
+            android:layout_weight="1"/>
+        <Button
+            android:id="@+id/btMoveToLikeList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="찜목록"
+            android:layout_weight="1"/>
+    </LinearLayout>
+
+
+</RelativeLayout>
