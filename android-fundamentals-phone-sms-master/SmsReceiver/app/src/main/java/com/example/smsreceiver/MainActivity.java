@@ -1,17 +1,10 @@
 package com.example.smsreceiver;
 
 import android.Manifest;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.content.res.Resources;
-import android.graphics.BitmapFactory;
-import android.os.Build;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -19,20 +12,14 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
-import androidx.core.app.NotificationCompat;
-import androidx.core.app.NotificationManagerCompat;
 import androidx.core.content.ContextCompat;
-
-import java.util.Set;
 
 public class MainActivity extends AppCompatActivity {
 
     //퍼미션을 위한 값
     static final int SMS_RECEIVE_PERMISSION = 1;
-    public static final String NOTIFICATION_CHANNEL_ID = "10001";
 
     EditText editText;
-    String string;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

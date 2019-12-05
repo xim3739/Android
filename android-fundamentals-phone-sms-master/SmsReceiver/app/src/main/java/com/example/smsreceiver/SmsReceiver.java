@@ -6,13 +6,10 @@ import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
 import android.telephony.SmsMessage;
 import android.util.Log;
-import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.core.app.NotificationCompat;
@@ -51,7 +48,7 @@ public class SmsReceiver extends BroadcastReceiver {
             Log.d("notification", contents);
 
             Intent sendIntent = new Intent(context, MainActivity.class);
-//            sendIntent.putExtra("string","ss");
+            sendIntent.putExtra("string",contents);
 
 
             PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, sendIntent, PendingIntent.FLAG_UPDATE_CURRENT);
