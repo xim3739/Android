@@ -2,21 +2,37 @@ package com.example.projectcalendarexample;
 
 public class ItemData {
 
-    private String date;
+    private int year;
+    private int month;
     private int dayValue;
     private String text;
     private int image;
 
+    public ItemData(int year, int month,  int dayValue, String text) {
+        this.year = year;
+        this.month = month;
+        this.dayValue = dayValue;
+        this.text = text;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
+
+    public int getMonth() {
+        return month;
+    }
+
+    public void setMonth(int month) {
+        this.month = month;
+    }
+
     public ItemData(){
 
-    }
-
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
     }
 
     public ItemData(int dayValue) {

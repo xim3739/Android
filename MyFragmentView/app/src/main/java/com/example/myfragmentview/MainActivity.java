@@ -10,7 +10,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener, Fragment2Activity.OnFragmentInteractionListener {
+
+    private Bundle bundle;
 
     private Button btMenu1, btMenu2, btMenu3;
 
@@ -28,7 +30,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btMenu2.setOnClickListener(this);
         btMenu3.setOnClickListener(this);
 
-        btMenu1.callOnClick();
+        btMenu2.callOnClick();
+
     }
 
     @Override
@@ -41,6 +44,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (v.getId()) {
             case R.id.btMenu1 :
                 fragment = new Fragment1Activity();
+
+                fragment.setArguments(bundle);
+
                 break;
             case R.id.btMenu2 :
                 fragment = new Fragment2Activity();
@@ -49,7 +55,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 fragment = new Fragment3Activity();
                 break;
         }
+
         fragmentTransaction.replace(R.id.frameLayout, fragment);
         fragmentTransaction.commit();
+
+    }
+
+    @Override
+    public void onFragmentInteration(Bundle bundle) {
+        this.bundle = bundle;
     }
 }

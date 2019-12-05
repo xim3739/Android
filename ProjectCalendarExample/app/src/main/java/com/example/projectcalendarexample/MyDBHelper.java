@@ -12,18 +12,17 @@ public class MyDBHelper extends SQLiteOpenHelper {
     public static final String TBL_NAME = "calendarTBL";
     public static final int DB_VERSION = 1;
     public MyDBHelper(@Nullable Context context) {
-        super(context, DB_NAME, null, DB_VERSION);
+        super(context, "calendarDB", null, DB_VERSION);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE " + TBL_NAME + "(year int, month int, day int, dayvalue int, text CHAR(50), PRIMARY KEY (year, month, day));");
-
+        db.execSQL("CREATE TABLE calendarTBL (year int NOT NULL, month int NOT NULL, dayvalue int NOT NULL, text CHAR(100), PRIMARY KEY (year, month, dayvalue));");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS " + TBL_NAME);
+        db.execSQL("DROP TABLE IF EXISTS calendarTBL;");
         onCreate(db);
     }
 }

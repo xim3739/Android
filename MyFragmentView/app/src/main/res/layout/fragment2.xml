@@ -16,6 +16,11 @@
             android:layout_height="wrap_content"
             android:text="누르세요"
             android:textSize="20sp"/>
+        <EditText
+            android:id="@+id/editText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="입력"/>
 
 
     </LinearLayout>

@@ -81,13 +81,16 @@ public class CalendarAdapter extends BaseAdapter {
         ImageView imageViewItem = gridView.findViewById(R.id.imageViewItem);
 
         if(itemData[position].getDayValue() == 0) {
+
             textViewItemDate.setText("");
             imageViewItem.setVisibility(View.INVISIBLE);
+
         } else {
+
             textViewItemDate.setText(String.valueOf(itemData[position].getDayValue()));
             textViewItemText.setText(itemData[position].getText());
-        }
 
+        }
 
         if(columnIndex == 0) {
             textViewItemDate.setTextColor(Color.RED);
