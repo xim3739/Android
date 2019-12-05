@@ -1,5 +1,6 @@
 package com.example.smsreceiver;
 
+import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -19,6 +20,9 @@ import java.util.Date;
 
 public class SmsReceiver extends BroadcastReceiver {
 
+    public static String NOTIFICATION_ID = "notification_id";
+    public static String NOTIFICATION = "notification";
+
     //디버그를 위한 값
     private static final String TAG = "SmsReceiver";
     private static final String NOTI_TAG = "notification";
@@ -32,57 +36,67 @@ public class SmsReceiver extends BroadcastReceiver {
         Bundle bundle = intent.getExtras();
         SmsMessage[] messages = parseSmsMessage(bundle);
 
-        if(messages.length>0){
-            //문자를 보낸 사람의 전화번호를 가져온다.
-            String sender = messages[0].getOriginatingAddress();
-            Log.d(TAG, "sender: "+sender);
-            //문자의 내용을 가져온다.
-            String contents = messages[0].getMessageBody().toString();
-            Log.d(TAG, "contents: "+contents);
-            //문자를 받은 날짜를 받는다.
-            Date receivedDate = new Date(messages[0].getTimestampMillis());
-            Log.d(TAG, "received date: "+receivedDate);
-            //인텐트로 보낸다.
-            //sendToActivity(context, sender+'\n'+contents+'\n'+format.format(receivedDate));
-
-            Log.d("notification", contents);
-
-            Intent sendIntent = new Intent(context, MainActivity.class);
-            sendIntent.putExtra("string",contents);
-
-
-            PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, sendIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-
-            NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-
-            NotificationChannel notificationChannel = new NotificationChannel("myApps", "myApp", NotificationManager.IMPORTANCE_DEFAULT);
-            notificationManager.createNotificationChannel(notificationChannel);
-
-            NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(context, "10001");
-            notificationBuilder.setContentTitle(sender).setContentText(sender+contents).setContentIntent(pendingIntent).setAutoCancel(true);
-
-            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                CharSequence charSequence = sender;
-                String description = contents;
-                int importnace = NotificationManager.IMPORTANCE_HIGH;
-
-                NotificationChannel channel = new NotificationChannel("10001", charSequence, importnace);
-                channel.setDescription(description);
-
-                assert notificationManager != null;
-                notificationManager.createNotificationChannel(channel);
-
-            } else {
-                notificationBuilder.setSmallIcon(R.mipmap.ic_launcher);
-                assert notificationManager != null;
-                notificationManager.notify(0, notificationBuilder.build());
-
-            }
-
-
-            notificationManager.notify(0, notificationBuilder.build());
-
+        if(messages.length == 0) {
+            return;
         }
+
+        //문자를 보낸 사람의 전화번호를 가져온다.
+        String sender = messages[0].getOriginatingAddress();
+        Log.d(TAG, "sender: "+sender);
+        //문자의 내용을 가져온다.
+        String contents = messages[0].getMessageBody().toString();
+        Log.d(TAG, "contents: "+contents);
+        //문자를 받은 날짜를 받는다.
+        Date receivedDate = new Date(messages[0].getTimestampMillis());
+        Log.d(TAG, "received date: "+receivedDate);
+        //인텐트로 보낸다.
+        //sendToActivity(context, sender+'\n'+contents+'\n'+format.format(receivedDate));
+        Log.d("notification", contents);
+
+//        Intent sendIntent = new Intent(context, MainActivity.class);
+//        sendIntent.putExtra("string",contents);
+//        ///////////////////////////////////////////////////////
+//        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, sendIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+//
+//        NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+//
+//        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(context, "10001");
+//        notificationBuilder.setContentTitle(sender).setContentText(sender+contents).setContentIntent(pendingIntent).setAutoCancel(true);
+//
+//        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+//
+//            CharSequence charSequence = sender;
+//            String description = contents;
+//            int importnace = NotificationManager.IMPORTANCE_HIGH;
+//
+//            NotificationChannel channel = new NotificationChannel("10001", charSequence, importnace);
+//            channel.setDescription(description);
+//
+//            assert notificationManager != null;
+//            notificationManager.createNotificationChannel(channel);
+//
+//        } else {
+//
+//            notificationBuilder.setSmallIcon(R.mipmap.ic_launcher);
+//
+//        }
+//
+//        assert notificationManager != null;
+//        notificationManager.notify(1234, notificationBuilder.build());
+
+        NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+        Notification notification = intent.getParcelableExtra(NOTIFICATION);
+
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            int importance = NotificationManager.IMPORTANCE_HIGH;
+            NotificationChannel notificationChannel = new NotificationChannel(NOTIFICATION_ID, "NOTIFICATION_CHNNEL_NAME", importance);
+            assert notificationManager != null;
+            notificationManager.createNotificationChannel(notificationChannel);
+        }
+        int id = intent.getIntExtra(NOTIFICATION, 0);
+        assert notificationManager != null;
+        notificationManager.notify(id, notification);
+
     }
 
     private void sendToActivity(Context context, String string) {
