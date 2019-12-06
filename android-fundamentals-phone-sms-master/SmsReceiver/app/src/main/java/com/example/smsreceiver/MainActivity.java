@@ -1,17 +1,16 @@
 package com.example.smsreceiver;
 
 import android.Manifest;
-import android.content.Context;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.widget.Button;
+import android.util.Log;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.core.content.ContextCompat;
 
 public class MainActivity extends AppCompatActivity {
@@ -27,26 +26,63 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         editText = findViewById(R.id.editText);
-        Button btClick = findViewById(R.id.btClick);
 
         //권한 설정 부분
         int permissionCheck = ContextCompat.checkSelfPermission(this, Manifest.permission.RECEIVE_SMS);
 
         if(permissionCheck == PackageManager.PERMISSION_GRANTED) {
+
             Toast.makeText(this, "Already SMS Accept", Toast.LENGTH_LONG).show();
+
         }else {
+
             Toast.makeText(this, "No SMS Accept", Toast.LENGTH_LONG).show();
 
             if(ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.RECEIVE_SMS)) {
+
                 Toast.makeText(this, "Need SMS Accept", Toast.LENGTH_LONG).show();
                 ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.RECEIVE_SMS}, SMS_RECEIVE_PERMISSION);
+
             } else {
+
                 ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.RECEIVE_SMS}, SMS_RECEIVE_PERMISSION);
+
             }
         }
 
 //        Intent passedIntent = getIntent();
 //        processIntent(passedIntent);
+
+    }
+
+    @Override
+    protected void onResume() {
+
+        super.onResume();
+
+        String date = "";
+        String sender = "";
+        String contents = "";
+
+        Bundle bundle = getIntent().getExtras();
+
+        if(bundle == null) {
+
+            contents = "no received message";
+            Log.d("check", "bundle null" + contents);
+
+        } else {
+
+            date = bundle.getString("date", "no date");
+            sender = bundle.getString("sender", "no sender");
+            contents = bundle.getString("contents", "no contents");
+            Log.d("check", "bundle not null" + contents);
+
+        }
+
+        editText.setText(date + "\n" + sender + "\n" + contents + "\n");
+
+        NotificationManagerCompat.from(this).cancel(0);
 
     }
 
@@ -56,17 +92,23 @@ public class MainActivity extends AppCompatActivity {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
         switch (requestCode) {
+
             case SMS_RECEIVE_PERMISSION :
+
                 if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
                     Toast.makeText(getApplicationContext(), "SMS Accept", Toast.LENGTH_LONG).show();
+
                 } else {
+
                     Toast.makeText(getApplicationContext(), "SMS not Accept", Toast.LENGTH_LONG).show();
+
                 }
                 break;
         }
     }
 
-//    //인텐트가 오면 작업할 부분
+//        //인텐트가 오면 작업할 부분
 //    private void processIntent(Intent passedIntent) {
 //        if(passedIntent != null) {
 //            string = passedIntent.getStringExtra("string");
