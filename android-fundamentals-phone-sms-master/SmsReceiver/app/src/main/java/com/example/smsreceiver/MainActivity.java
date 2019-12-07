@@ -4,7 +4,6 @@ import android.Manifest;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -12,6 +11,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.core.content.ContextCompat;
+
+import com.rey.material.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -62,7 +63,9 @@ public class MainActivity extends AppCompatActivity {
 
         String date = "";
         String sender = "";
-        String contents = "";
+        String contents;
+        String resultCredit = "";
+        String resultLocation = "";
 
         Bundle bundle = getIntent().getExtras();
 
@@ -78,12 +81,52 @@ public class MainActivity extends AppCompatActivity {
             contents = bundle.getString("contents", "no contents");
             Log.d("check", "bundle not null" + contents);
 
+            resultCredit = checkSMSCredit(contents);
+            resultLocation = checkSMSLocation(contents);
+
         }
 
-        editText.setText(date + "\n" + sender + "\n" + contents + "\n");
+        editText.setText(resultCredit + "\n" + resultLocation);
 
         NotificationManagerCompat.from(this).cancel(0);
 
+    }
+
+    private String checkSMSLocation(String contents) {
+
+        String resultLocation = "";
+
+        if(contents.contains("신한") && contents.contains("승인")) {
+            String[] location = contents.split("원 ");
+            for(String checkLocation : location) {
+                resultLocation = checkLocation;
+            }
+            int index = resultLocation.indexOf("[");
+            resultLocation = resultLocation.substring(0, index);
+        } else {
+            return resultLocation;
+        }
+
+        return resultLocation;
+    }
+
+    private String checkSMSCredit(String contents) {
+
+        String resultCredit = "";
+
+        if(contents.contains("신한") && contents.contains("승인")) {
+            String[] credit = contents.split("액\\)");
+            for(String checkCredit : credit) {
+                resultCredit = checkCredit;
+            }
+            int index = resultCredit.indexOf("원");
+            resultCredit  = resultCredit.substring(0, index);
+        } else{
+
+            return resultCredit;
+        }
+
+        return resultCredit;
     }
 
     //권한 설정

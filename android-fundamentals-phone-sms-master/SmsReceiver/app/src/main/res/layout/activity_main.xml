@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -8,16 +9,23 @@
     android:orientation="vertical"
     android:gravity="center">
 
-    <EditText
+    <com.rey.material.widget.Button
+        style="@style/Material.Drawable.Ripple.Wave"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:text="Click"
+        android:textSize="20sp" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="Click"/>
+
+    <com.rey.material.widget.EditText
+        style="@style/Material.Widget.EditText.Light"
         android:id="@+id/editText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
-
-    <Button
-        android:id="@+id/btClick"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="click"/>
-
 
 </LinearLayout>
