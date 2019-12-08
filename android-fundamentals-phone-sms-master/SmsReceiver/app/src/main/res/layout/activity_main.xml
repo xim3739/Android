@@ -9,18 +9,19 @@
     android:orientation="vertical"
     android:gravity="center">
 
+    <RelativeLayout
+        android:id="@+id/mapView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"/>
+
     <com.rey.material.widget.Button
-        style="@style/Material.Drawable.Ripple.Wave"
+        android:id="@+id/btClick"
+        style="@style/Material.Drawable.Ripple"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:text="Click"
         android:textSize="20sp" />
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:text="Click"/>
 
     <com.rey.material.widget.EditText
         style="@style/Material.Widget.EditText.Light"
