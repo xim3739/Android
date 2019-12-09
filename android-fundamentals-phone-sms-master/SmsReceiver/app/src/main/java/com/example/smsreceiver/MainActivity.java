@@ -151,6 +151,7 @@ public class MainActivity extends AppCompatActivity {
             //API 요청과 함께 요청 후 돌아오는 데이터 값을 받아서 리턴한다.
             @Override
             protected String doInBackground(Void... voids) {
+
                 //TODO on background thread
 
                 //Uri 를 만든다. Url은 encoding 을 해야하기 때문에 자동으로 해주는 Uri를 만든다.
@@ -187,6 +188,7 @@ public class MainActivity extends AppCompatActivity {
 
                         resultString = buffer.toString();
                         return resultString;
+
                         // 요청에 오류가 있는 경우
                     } else {
                         Log.e("!!", "error" + connection.getResponseCode());
@@ -202,25 +204,37 @@ public class MainActivity extends AppCompatActivity {
             //백그라운드 스레드가 끝나면 해야 할 동작
             @Override
             protected void onPostExecute(String resultString) {
+
                 super.onPostExecute(resultString);
+
                 // TODO should recover user interactions
+
                 //요청 후 받은 데이터를 해석하는 함수
                 handleSearchResult(resultString);
+
             }
+
         }.execute();
+
     }
 
     //위치 정보를 uri에 저장하는 곳
     private Uri.Builder addCurrentLocationQueryAt(Uri.Builder builder) {
+
         builder.appendQueryParameter("x", "37.5642135")
                 .appendQueryParameter("y", "127.0016985");
+
         return builder;
+
     }
 
     //키워드 정보를 uri에 저장하는곳
     private Uri.Builder addSearchKeywordQueryAt(Uri.Builder builder) {
+
         builder.appendQueryParameter("query", editText.getText().toString());
+
         return builder;
+
     }
 
     //요청 후 데이터를 해석하는 함수
@@ -249,8 +263,10 @@ public class MainActivity extends AppCompatActivity {
 
             // 데이터를 받을 때 오류
         } catch (JSONException e) {
+
             Log.e("!!!", "error : " + e.getMessage());
             e.printStackTrace();
+
         }
 
 
@@ -361,16 +377,23 @@ public class MainActivity extends AppCompatActivity {
 
     //해시키를 가져오는 함수
     private void getHash() {
+
         try {
+
             PackageInfo packageInfoCompat = getPackageManager().getPackageInfo("com.example.smsreceiver", PackageManager.GET_SIGNATURES);
 
             for(Signature signature : packageInfoCompat.signatures) {
+
                 MessageDigest md = MessageDigest.getInstance("SHA");
                 md.update(signature.toByteArray());
                 Log.d("hash", "key : " + Base64.encodeToString(md.digest(), Base64.DEFAULT));
+
             }
+
         } catch (Exception e){
+
             e.printStackTrace();
+
         }
     }
 
